@@ -8,7 +8,7 @@ Battleship game for AP Computer Science AB 2022-2023 in Ivan Rico's class
 
 ## Running
 
-- First download the **[Latest release](https://github.com/luis-c465/Encryption/releases/latest)**
+- First download the **[Latest release](https://github.com/luis-c465/Battleship/releases/latest)**
 - Then run in the command line _(Or just double click on the file)_
   ```bash
   java -jar [path to downloaded jar file]
