@@ -17,8 +17,10 @@ public final class App extends BaseApp {
   public Header header;
   public HelpModal helpModal;
 
+  public int turn = 1;
   public Player p1;
   public Player p2;
+  public Player player;
 
   @Override
   public void draw() {
@@ -32,6 +34,9 @@ public final class App extends BaseApp {
     header.update();
 
     helpModal.update();
+
+    p1.update();
+    p2.update();
   }
 
   @Override
@@ -51,6 +56,8 @@ public final class App extends BaseApp {
     p2 = new Player(this);
     p2.setup();
 
+    player = p1;
+
     println(p1);
     println(p2);
   }
@@ -62,5 +69,7 @@ public final class App extends BaseApp {
 
   public void mouseClicked(MouseEvent e) {
     helpModal.mouseClicked();
+
+    player.shipPlacer.onMouseClick();
   }
 }
