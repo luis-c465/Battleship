@@ -2,17 +2,18 @@ package luisc.battleship;
 
 import controlP5.ControlP5;
 import luisc.lib.BaseHeader;
+import luisc.lib.PC;
 import luisc.resources.Colors;
 
 public class Header extends BaseHeader {
 
   @Override
   protected void _update() {
-    p.textSize(20);
+    p.textSize(30);
     if (a.player.placingShips) {
-      p.text("Player " + a.player.num + " Place your ships", App.cw, 20);
+      p.text("Player " + a.player.num + " Place your ships", App.cw, 30);
     } else {
-      p.text("Player " + a.player.num + " Take your shot", App.cw, 20);
+      p.text("Player " + a.player.num + " Take your shot", App.cw, 30);
     }
 
     p.textSize(30);
@@ -29,6 +30,14 @@ public class Header extends BaseHeader {
     } else {
       p.text("Shots", App.cw / 2 + 450, 80);
     }
+
+    // Show the number of wins for that player
+    p.textSize(20);
+
+    int curPlayerWins = a.player.num == 1 ? a.p1Wins : a.p1Wins;
+    int otherPlayerWins = a.player.num == 1 ? a.p2Wins : a.p1Wins;
+    p.textAlign(PC.LEFT);
+    p.text("Wins: " + curPlayerWins + " - Losses: " + otherPlayerWins, 20, 20);
   }
 
   @Override
@@ -36,7 +45,7 @@ public class Header extends BaseHeader {
     difficulty =
       a.cp5
         .addScrollableList("dropdown")
-        .setPosition(650, 0)
+        .setPosition(700, 0)
         .setSize(130, 500)
         .setBarHeight(30)
         .setItemHeight(20)
