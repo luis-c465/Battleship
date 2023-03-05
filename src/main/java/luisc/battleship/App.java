@@ -12,9 +12,11 @@ public final class App extends BaseApp {
   public static final int[] EASY_SHIPS = { 5, 4, 3 };
   public static final int[] HARD_SHIPS = { 6, 5, 4, 3, 2 };
 
+  public int winner = -1;
   public int p1Wins = 0;
   public int p2Wins = 0;
   public boolean gameOver = false;
+  public int curDropdown = 0;
 
   public boolean turnOver = false;
 
@@ -114,6 +116,11 @@ public final class App extends BaseApp {
     p2.otherPlayer = p1;
 
     player = p1;
+    curDropdown = n;
+    winner = -1;
+
+    gameOver = false;
+    turnOver = false;
   }
 
   public void checkGameOver() {
@@ -123,12 +130,12 @@ public final class App extends BaseApp {
 
     if (p1.checkIfWon()) {
       p1Wins++;
-      dropdown(1);
       gameOver = true;
+      winner = 1;
     } else if (p2.checkIfWon()) {
       p2Wins++;
-      dropdown(1);
       gameOver = true;
+      winner = 2;
     }
   }
 }

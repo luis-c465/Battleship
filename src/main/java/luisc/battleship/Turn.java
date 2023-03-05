@@ -9,10 +9,6 @@ public class Turn extends Obj {
   public static final int x = App.cw;
   public static final int y = App.ch;
 
-  public int round_x = x;
-  public int round_y = y + 100;
-  public String pName = "NULL";
-
   public EnterBtn enterBtn;
 
   protected void _setup() {
@@ -21,20 +17,37 @@ public class Turn extends Obj {
   }
 
   protected void _update() {
-    p.background(0);
-    p.textAlign(PC.CENTER);
-    p.textSize(30);
-    p.text("Turn over, pass the computer to the next player", x, y - 100);
-    p.textSize(60);
-    p.text("Press enter to continue", x, y + 100);
+    if (!a.gameOver) {
+      p.background(0);
+      p.textAlign(PC.CENTER);
+      p.textSize(30);
+      p.text("Turn over, pass the computer to the next player", x, y - 100);
+      p.textSize(60);
+      p.text("Press enter to continue", x, y + 100);
 
-    enterBtn.update();
-    if (enterBtn.clicked) {
-      a.turnOver = false;
-      enterBtn.clicked = false;
+      enterBtn.update();
+      if (enterBtn.clicked) {
+        a.turnOver = false;
+        enterBtn.clicked = false;
 
-      a.player.tookShot = false;
-      a.player = a.player.otherPlayer;
+        a.player.tookShot = false;
+        a.player = a.player.otherPlayer;
+      }
+    } else if (a.gameOver) {
+      p.imageMode(PC.CORNER);
+      p.image(r.i.winner, 0, 0, App.w, App.h);
+
+      p.textAlign(PC.CENTER);
+      p.textSize(30);
+      p.text("Player " + a.winner + " wins! ", x, y - 100);
+      p.textSize(60);
+      p.text("Press enter to restart", x, y + 100);
+
+      enterBtn.update();
+      if (enterBtn.clicked) {
+        enterBtn.clicked = false;
+        a.dropdown(a.curDropdown);
+      }
     }
   }
 
