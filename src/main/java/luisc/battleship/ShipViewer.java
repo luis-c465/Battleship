@@ -1,9 +1,11 @@
 package luisc.battleship;
 
+import luisc.lib.Obj;
 import luisc.lib.PC;
-import luisc.lib.TwoDArrayClickable;
 
-public class ShipViewer extends TwoDArrayClickable {
+public class ShipViewer extends Obj {
+
+  public int x, y, row, col;
 
   public static final int SIZE = 60;
 
@@ -31,7 +33,9 @@ public class ShipViewer extends TwoDArrayClickable {
 
     p.textAlign(PC.CENTER);
     p.textSize(20);
-    p.text("" + value, x + SIZE / 2, y + SIZE / 2);
+    if (value != Default) {
+      p.text("" + value, x + SIZE / 2, y + SIZE / 2);
+    }
   }
 
   @Override
@@ -40,8 +44,11 @@ public class ShipViewer extends TwoDArrayClickable {
   }
 
   public ShipViewer(App a, int r, int c, int px, int py) {
-    super(a, r, c);
-    x = px + col * SIZE;
-    y = py + row * SIZE;
+    super(a);
+    x = px + c * SIZE;
+    y = py + r * SIZE;
+
+    row = r;
+    col = c;
   }
 }

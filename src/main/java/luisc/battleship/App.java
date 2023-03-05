@@ -49,11 +49,14 @@ public final class App extends BaseApp {
     helpModal = new HelpModal(this);
     helpModal.setup();
 
-    p1 = new Player(this);
+    p1 = new Player(this, 1);
     p1.setup();
 
-    p2 = new Player(this);
+    p2 = new Player(this, 2);
     p2.setup();
+
+    p1.otherPlayer = p2;
+    p2.otherPlayer = p1;
 
     player = p1;
 
@@ -71,6 +74,8 @@ public final class App extends BaseApp {
 
     if (player.placingShips) {
       player.shipPlacer.onMouseClick();
+    } else {
+      player.shotPlacer.onMouseClick();
     }
   }
 }
