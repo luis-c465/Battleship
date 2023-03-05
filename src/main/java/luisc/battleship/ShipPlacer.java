@@ -9,9 +9,11 @@ import luisc.lib.PC;
  */
 public class ShipPlacer extends Obj {
 
+  public static final int[] SHIPS = { 5, 4, 3, 3, 2 };
+
   public Player player;
+  public int placingShipIndex = 0;
   public int placingShip = 5;
-  public int minPlacingShip = 2;
 
   @Override
   protected void _update() {}
@@ -31,9 +33,11 @@ public class ShipPlacer extends Obj {
       return;
     }
 
-    if (placingShip < minPlacingShip) {
+    if (placingShipIndex >= SHIPS.length) {
       player.placingShips = false;
       return;
+    } else {
+      placingShip = SHIPS[placingShipIndex];
     }
 
     int row = (int) ((p.mouseY - Player.PADDING_TOP_SHIPS) / ShipViewer.SIZE);
@@ -58,7 +62,7 @@ public class ShipPlacer extends Obj {
         player.ships.ships[row + i][col].value = placingShip;
       }
 
-      placingShip--;
+      placingShipIndex++;
     } else if (p.mouseButton == PC.RIGHT) { // Place the ship to the right
       // Check if the ship can fit in the board
       if (col + placingShip > Board.COLS) {
@@ -77,7 +81,7 @@ public class ShipPlacer extends Obj {
         player.ships.ships[row][col + i].value = placingShip;
       }
 
-      placingShip--;
+      placingShipIndex++;
     }
   }
 

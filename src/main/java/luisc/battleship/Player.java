@@ -5,7 +5,7 @@ import luisc.lib.Obj;
 public class Player extends Obj {
 
   public static final int PADDING_TOP_SHIPS = 100;
-  public static final int PADDING_LEFT_SHIPS = 100;
+  public static final int PADDING_LEFT_SHIPS = 50;
 
   public static final int PADDING_TOP_SHOTS = 100;
   public static final int PADDING_LEFT_SHOTS = 500;

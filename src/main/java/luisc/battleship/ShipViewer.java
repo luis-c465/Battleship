@@ -5,7 +5,7 @@ import luisc.lib.TwoDArrayClickable;
 
 public class ShipViewer extends TwoDArrayClickable {
 
-  public static final int SIZE = 50;
+  public static final int SIZE = 60;
 
   public static final int Aircraft = 5;
   public static final int Battleship = 4;
