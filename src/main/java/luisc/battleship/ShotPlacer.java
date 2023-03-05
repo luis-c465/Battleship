@@ -21,12 +21,12 @@ public class ShotPlacer extends Obj {
     // Then check if the ship can be placed there
     if (
       p.mouseX < Player.PADDING_LEFT_SHOTS ||
-      p.mouseX > Player.PADDING_LEFT_SHOTS + 7 * 50
+      p.mouseX > Player.PADDING_LEFT_SHOTS + 8 * 50
     ) {
       return;
     } else if (
       p.mouseY < Player.PADDING_TOP_SHOTS ||
-      p.mouseY > Player.PADDING_TOP_SHOTS + 7 * 50
+      p.mouseY > Player.PADDING_TOP_SHOTS + 8 * 50
     ) {
       return;
     }
