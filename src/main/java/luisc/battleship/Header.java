@@ -9,11 +9,20 @@ public class Header extends BaseHeader {
 
   @Override
   protected void _update() {
-    p.textSize(30);
+    p.textSize(25);
     if (a.player.placingShips) {
-      p.text("Player " + a.player.num + " Place your ships", App.cw, 30);
+      int curShipLen =
+        a.player.shipPlacer.ships[a.player.shipPlacer.placingShipIndex <
+            a.player.shipPlacer.ships.length
+            ? a.player.shipPlacer.placingShipIndex
+            : 0];
+      p.text(
+        "Player " + a.player.num + " place a ship of length " + curShipLen,
+        App.cw - 50,
+        30
+      );
     } else {
-      p.text("Player " + a.player.num + " Take your shot", App.cw, 30);
+      p.text("Player " + a.player.num + " Take your shot", App.cw - 50, 30);
     }
 
     p.textSize(30);

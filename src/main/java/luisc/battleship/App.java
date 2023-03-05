@@ -98,7 +98,7 @@ public final class App extends BaseApp {
   }
 
   public void checkGameOver() {
-    if (gameOver) {
+    if (gameOver || p1.placingShips || p2.placingShips) {
       return;
     }
 
