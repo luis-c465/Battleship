@@ -27,6 +27,9 @@ public class ShipViewer extends Obj {
 
   @Override
   protected void _update() {
+    p.imageMode(PC.CORNER);
+    p.image(r.i.water, x, y, SIZE, SIZE);
+
     p.rectMode(PC.CORNER);
     p.noFill();
     p.strokeWeight(2);
@@ -35,11 +38,10 @@ public class ShipViewer extends Obj {
 
     p.textAlign(PC.CENTER);
     p.textSize(20);
-    if (value != Default) {
-      p.text("" + value, x + SIZE / 2, y + SIZE / 2);
-    }
+    // if (value != Default) {
+    //   p.text("" + value, x + SIZE / 2, y + SIZE / 2);
+    // }
 
-    p.imageMode(PC.CORNER);
     if (value >= Patrol) {
       p.image(r.i.amog, x, y, SIZE, SIZE);
     } else if (value == Miss) {
