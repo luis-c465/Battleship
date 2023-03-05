@@ -30,6 +30,9 @@ public final class App extends BaseApp {
   public void draw() {
     defaultSettings();
 
+    imageMode(CORNER);
+    image(r.i.bg, 0, 0, w, h);
+
     doingIntro = false;
     doingStartUp = false;
     // intro.update();
