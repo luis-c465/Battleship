@@ -9,7 +9,7 @@ import luisc.lib.PC;
  */
 public class ShipPlacer extends Obj {
 
-  public static final int[] SHIPS = { 5, 4, 3, 3, 2 };
+  public int[] ships;
 
   public Player player;
   public int placingShipIndex = 0;
@@ -33,8 +33,8 @@ public class ShipPlacer extends Obj {
       return;
     }
 
-    if (placingShipIndex < SHIPS.length) {
-      placingShip = SHIPS[placingShipIndex];
+    if (placingShipIndex < ships.length) {
+      placingShip = ships[placingShipIndex];
     }
 
     int row = (int) ((p.mouseY - Player.PADDING_TOP_SHIPS) / ShipViewer.SIZE);
@@ -81,14 +81,15 @@ public class ShipPlacer extends Obj {
       placingShipIndex++;
     }
 
-    if (placingShipIndex >= SHIPS.length) {
+    if (placingShipIndex >= ships.length) {
       player.placingShips = false;
       a.player = a.player == a.p1 ? a.p2 : a.p1;
     }
   }
 
-  public ShipPlacer(App app, Player player) {
+  public ShipPlacer(App app, Player player, int[] ships) {
     super(app);
     this.player = player;
+    this.ships = ships;
   }
 }

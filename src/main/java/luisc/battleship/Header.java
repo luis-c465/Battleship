@@ -1,5 +1,6 @@
 package luisc.battleship;
 
+import controlP5.ControlP5;
 import luisc.lib.BaseHeader;
 import luisc.resources.Colors;
 
@@ -28,6 +29,37 @@ public class Header extends BaseHeader {
     } else {
       p.text("Shots", App.cw / 2 + 450, 80);
     }
+  }
+
+  @Override
+  protected void createControllers() {
+    difficulty =
+      a.cp5
+        .addScrollableList("dropdown")
+        .setPosition(650, 0)
+        .setSize(130, 500)
+        .setBarHeight(30)
+        .setItemHeight(20)
+        .addItems(new String[] { "Easy (3 Ships & See)", "Medium (5 Ships)" })
+        .setLabel("Difficulty")
+        .close()
+        .hide();
+
+    difficulty
+      .getValueLabel()
+      .align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE)
+      .setPaddingX(0)
+      .setFont(r.f.nunito)
+      .setSize(12);
+
+    difficulty
+      .getCaptionLabel()
+      .align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE)
+      .setPaddingX(0)
+      .setFont(r.f.nunito)
+      .setSize(12);
+
+    controllers.add(difficulty);
   }
 
   public Header(App app) {

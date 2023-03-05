@@ -5,6 +5,8 @@ import luisc.lib.Obj;
 
 public class Board extends Obj {
 
+  public boolean showEnemyShips = false;
+
   public Player player;
 
   public static final int ROWS = 7;
@@ -33,7 +35,19 @@ public class Board extends Obj {
 
     for (int i = 0; i < ships.length; i++) {
       for (int j = 0; j < ships[i].length; j++) {
-        ships[i][j] = new ShipViewer(a, i, j, px, py);
+        ships[i][j] = new ShipViewer(a, i, j, px, py, false);
+      }
+    }
+  }
+
+  public Board(App a, Player p, int px, int py, boolean showEnemyShips) {
+    super(a);
+    this.showEnemyShips = showEnemyShips;
+    this.player = p;
+
+    for (int i = 0; i < ships.length; i++) {
+      for (int j = 0; j < ships[i].length; j++) {
+        ships[i][j] = new ShipViewer(a, i, j, px, py, showEnemyShips);
       }
     }
   }

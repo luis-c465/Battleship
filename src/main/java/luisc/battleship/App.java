@@ -9,8 +9,12 @@ import processing.event.MouseEvent;
  */
 public final class App extends BaseApp {
 
+  public static final int[] EASY_SHIPS = { 5, 4, 3 };
+  public static final int[] HARD_SHIPS = { 5, 4, 3, 3, 2 };
+
   public int p1Wins = 0;
   public int p2Wins = 0;
+  public boolean gameOver = false;
 
   // Game classes
   public AppIntro intro;
@@ -26,6 +30,8 @@ public final class App extends BaseApp {
   public void draw() {
     defaultSettings();
 
+    doingIntro = false;
+    doingStartUp = false;
     // intro.update();
     // if (doingIntro) {
     //   return;
@@ -36,6 +42,8 @@ public final class App extends BaseApp {
     helpModal.update();
 
     player.update();
+
+    checkGameOver();
   }
 
   @Override
@@ -49,16 +57,8 @@ public final class App extends BaseApp {
     helpModal = new HelpModal(this);
     helpModal.setup();
 
-    p1 = new Player(this, 1);
-    p1.setup();
-
-    p2 = new Player(this, 2);
-    p2.setup();
-
-    p1.otherPlayer = p2;
-    p2.otherPlayer = p1;
-
-    player = p1;
+    // Instantiate the players
+    dropdown(1);
 
     println(p1);
     println(p2);
@@ -76,6 +76,40 @@ public final class App extends BaseApp {
       player.shipPlacer.onMouseClick();
     } else {
       player.shotPlacer.onMouseClick();
+    }
+  }
+
+  public void dropdown(int n) {
+    if (n == 0) {
+      p1 = new Player(this, 1, true, EASY_SHIPS);
+      p2 = new Player(this, 2, true, EASY_SHIPS);
+    } else if (n == 1) {
+      p1 = new Player(this, 1, false, HARD_SHIPS);
+      p2 = new Player(this, 2, false, HARD_SHIPS);
+    }
+
+    p1.setup();
+    p2.setup();
+
+    p1.otherPlayer = p2;
+    p2.otherPlayer = p1;
+
+    player = p1;
+  }
+
+  public void checkGameOver() {
+    if (gameOver) {
+      return;
+    }
+
+    if (p1.checkIfWon()) {
+      p1Wins++;
+      dropdown(1);
+      gameOver = true;
+    } else if (p2.checkIfWon()) {
+      p2Wins++;
+      dropdown(1);
+      gameOver = true;
     }
   }
 }

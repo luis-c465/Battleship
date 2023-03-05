@@ -21,14 +21,21 @@ public class Player extends Obj {
   public ShipPlacer shipPlacer;
   public ShotPlacer shotPlacer;
 
-  public Player(App a, int n) {
+  public Player(App a, int n, boolean shouldShowEnemyShips, int[] arr) {
     super(a);
     this.num = n;
 
-    ships = new Board(a, this, PADDING_LEFT_SHIPS, PADDING_TOP_SHIPS);
-    shots = new Board(a, this, PADDING_LEFT_SHOTS, PADDING_TOP_SHOTS);
+    ships = new Board(a, this, PADDING_LEFT_SHIPS, PADDING_TOP_SHIPS, false);
+    shots =
+      new Board(
+        a,
+        this,
+        PADDING_LEFT_SHOTS,
+        PADDING_TOP_SHOTS,
+        shouldShowEnemyShips
+      );
 
-    shipPlacer = new ShipPlacer(a, this);
+    shipPlacer = new ShipPlacer(a, this, arr);
     shotPlacer = new ShotPlacer(a, this);
 
     ships.setup();
@@ -47,6 +54,18 @@ public class Player extends Obj {
 
       a.player = otherPlayer;
     }
+  }
+
+  public boolean checkIfWon() {
+    for (int i = 0; i < ships.ships.length; i++) {
+      for (int j = 0; j < ships.ships[i].length; j++) {
+        if (ships.ships[i][j].value >= ShipViewer.Patrol) {
+          return false;
+        }
+      }
+    }
+
+    return true;
   }
 
   @Override

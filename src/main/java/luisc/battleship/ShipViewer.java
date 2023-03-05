@@ -5,6 +5,8 @@ import luisc.lib.PC;
 
 public class ShipViewer extends Obj {
 
+  public boolean showEnemyShips = false;
+
   public int x, y, row, col;
 
   public static final int SIZE = 60;
@@ -36,6 +38,14 @@ public class ShipViewer extends Obj {
     if (value != Default) {
       p.text("" + value, x + SIZE / 2, y + SIZE / 2);
     }
+
+    if (
+      showEnemyShips &&
+      a.player.otherPlayer.ships.ships[row][col].value > Patrol
+    ) {
+      p.fill(255, 0, 0);
+      p.rect(x, y, SIZE, SIZE);
+    }
   }
 
   @Override
@@ -43,12 +53,21 @@ public class ShipViewer extends Obj {
     return "" + value + (hit ? "hit" : "");
   }
 
-  public ShipViewer(App a, int r, int c, int px, int py) {
+  public ShipViewer(
+    App a,
+    int r,
+    int c,
+    int px,
+    int py,
+    boolean showEnemyShips
+  ) {
     super(a);
     x = px + c * SIZE;
     y = py + r * SIZE;
 
     row = r;
     col = c;
+
+    this.showEnemyShips = showEnemyShips;
   }
 }
