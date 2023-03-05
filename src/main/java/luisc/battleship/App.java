@@ -35,8 +35,7 @@ public final class App extends BaseApp {
 
     helpModal.update();
 
-    p1.update();
-    // p2.update();
+    player.update();
   }
 
   @Override

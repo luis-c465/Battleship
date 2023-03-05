@@ -33,10 +33,7 @@ public class ShipPlacer extends Obj {
       return;
     }
 
-    if (placingShipIndex >= SHIPS.length) {
-      player.placingShips = false;
-      return;
-    } else {
+    if (placingShipIndex < SHIPS.length) {
       placingShip = SHIPS[placingShipIndex];
     }
 
@@ -82,6 +79,11 @@ public class ShipPlacer extends Obj {
       }
 
       placingShipIndex++;
+    }
+
+    if (placingShipIndex >= SHIPS.length) {
+      player.placingShips = false;
+      a.player = a.player == a.p1 ? a.p2 : a.p1;
     }
   }
 
