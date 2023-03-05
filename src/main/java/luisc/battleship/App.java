@@ -36,7 +36,7 @@ public final class App extends BaseApp {
     helpModal.update();
 
     p1.update();
-    p2.update();
+    // p2.update();
   }
 
   @Override
@@ -70,6 +70,8 @@ public final class App extends BaseApp {
   public void mouseClicked(MouseEvent e) {
     helpModal.mouseClicked();
 
-    player.shipPlacer.onMouseClick();
+    if (player.placingShips) {
+      player.shipPlacer.onMouseClick();
+    }
   }
 }

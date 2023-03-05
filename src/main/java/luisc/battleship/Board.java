@@ -7,10 +7,10 @@ public class Board extends Obj {
 
   public Player player;
 
-  public static final int PADDING_TOP = 100;
-  public static final int PADDING_LEFT = 100;
+  public static final int ROWS = 7;
+  public static final int COLS = 7;
 
-  public ShipViewer[][] ships = new ShipViewer[7][7];
+  public ShipViewer[][] ships = new ShipViewer[ROWS][COLS];
 
   @Override
   protected void _update() {
@@ -27,13 +27,13 @@ public class Board extends Obj {
     return Arrays.deepToString(ships);
   }
 
-  public Board(App a, Player p) {
+  public Board(App a, Player p, int px, int py) {
     super(a);
     this.player = p;
 
     for (int i = 0; i < ships.length; i++) {
       for (int j = 0; j < ships[i].length; j++) {
-        ships[i][j] = new ShipViewer(a, i, j);
+        ships[i][j] = new ShipViewer(a, i, j, px, py);
       }
     }
   }

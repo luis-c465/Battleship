@@ -4,6 +4,12 @@ import luisc.lib.Obj;
 
 public class Player extends Obj {
 
+  public static final int PADDING_TOP_SHIPS = 100;
+  public static final int PADDING_LEFT_SHIPS = 100;
+
+  public static final int PADDING_TOP_SHOTS = 100;
+  public static final int PADDING_LEFT_SHOTS = 500;
+
   public boolean placingShips = true;
 
   public Board ships;
@@ -12,8 +18,9 @@ public class Player extends Obj {
 
   public Player(App a) {
     super(a);
-    ships = new Board(a, this);
-    shots = new Board(a, this);
+    ships = new Board(a, this, PADDING_LEFT_SHIPS, PADDING_TOP_SHIPS);
+    shots = new Board(a, this, PADDING_LEFT_SHOTS, PADDING_TOP_SHOTS);
+
     shipPlacer = new ShipPlacer(a, this);
 
     ships.setup();
