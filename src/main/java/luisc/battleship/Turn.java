@@ -27,11 +27,17 @@ public class Turn extends Obj {
 
       enterBtn.update();
       if (enterBtn.clicked) {
-        a.turnOver = false;
-        enterBtn.clicked = false;
+        if (a.placeOver) {
+          a.placeOver = false;
+        } else {
+          a.turnOver = false;
 
-        a.player.tookShot = false;
+          a.player.tookShot = false;
+        }
+
         a.player = a.player.otherPlayer;
+
+        enterBtn.clicked = false;
       }
     } else if (a.gameOver) {
       p.imageMode(PC.CORNER);

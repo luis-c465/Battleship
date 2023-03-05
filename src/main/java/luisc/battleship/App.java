@@ -18,6 +18,7 @@ public final class App extends BaseApp {
   public boolean gameOver = false;
   public int curDropdown = 0;
 
+  public boolean placeOver = false;
   public boolean turnOver = false;
 
   // Game classes
@@ -48,7 +49,7 @@ public final class App extends BaseApp {
 
     endTurnBtn.update();
 
-    if (!turnOver) {
+    if (!turnOver && !placeOver) {
       header.update();
 
       helpModal.update();
@@ -91,6 +92,10 @@ public final class App extends BaseApp {
   }
 
   public void mouseClicked(MouseEvent e) {
+    if (turnOver) {
+      return;
+    }
+
     helpModal.mouseClicked();
 
     if (player.placingShips) {

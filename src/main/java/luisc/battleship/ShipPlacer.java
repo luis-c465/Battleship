@@ -83,7 +83,8 @@ public class ShipPlacer extends Obj {
 
     if (placingShipIndex >= ships.length) {
       player.placingShips = false;
-      a.player = a.player == a.p1 ? a.p2 : a.p1;
+
+      a.placeOver = true;
     }
   }
 
