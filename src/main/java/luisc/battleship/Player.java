@@ -48,12 +48,6 @@ public class Player extends Obj {
   protected void _update() {
     ships.update();
     shots.update();
-
-    if (tookShot) {
-      otherPlayer.tookShot = false;
-
-      a.player = otherPlayer;
-    }
   }
 
   public boolean checkIfWon() {

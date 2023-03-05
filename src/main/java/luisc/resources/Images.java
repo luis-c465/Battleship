@@ -13,6 +13,7 @@ public class Images extends ResourceHolder<PImage> {
   public PImage amog;
   public PImage shotAmog;
   public PImage water;
+  public PImage enter;
 
   @Override
   protected void load() {
@@ -24,6 +25,8 @@ public class Images extends ResourceHolder<PImage> {
     amog = p.loadImage("amog.png");
     shotAmog = p.loadImage("shot-amog.png");
     water = p.loadImage("water.png");
+
+    enter = p.loadImage("enter.png");
   }
 
   public Images(BaseApp p) {

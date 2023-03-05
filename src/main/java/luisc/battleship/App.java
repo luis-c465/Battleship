@@ -16,15 +16,19 @@ public final class App extends BaseApp {
   public int p2Wins = 0;
   public boolean gameOver = false;
 
+  public boolean turnOver = false;
+
   // Game classes
   public AppIntro intro;
   public Header header;
   public HelpModal helpModal;
 
-  public int turn = 1;
+  public int turnNum = 1;
   public Player p1;
   public Player p2;
   public Player player;
+  public Turn turn;
+  public SkipBtn endTurnBtn;
 
   @Override
   public void draw() {
@@ -40,11 +44,17 @@ public final class App extends BaseApp {
     //   return;
     // }
 
-    header.update();
+    endTurnBtn.update();
 
-    helpModal.update();
+    if (!turnOver) {
+      header.update();
 
-    player.update();
+      helpModal.update();
+
+      player.update();
+    } else {
+      turn.update();
+    }
 
     checkGameOver();
   }
@@ -59,6 +69,12 @@ public final class App extends BaseApp {
 
     helpModal = new HelpModal(this);
     helpModal.setup();
+
+    endTurnBtn = new SkipBtn(this);
+    endTurnBtn.setup();
+
+    turn = new Turn(this);
+    turn.setup();
 
     // Instantiate the players
     dropdown(1);
