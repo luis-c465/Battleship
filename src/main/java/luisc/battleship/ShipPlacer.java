@@ -23,12 +23,12 @@ public class ShipPlacer extends Obj {
     // Then check if the ship can be placed there
     if (
       p.mouseX < Player.PADDING_LEFT_SHIPS ||
-      p.mouseX > Player.PADDING_LEFT_SHIPS + 7 * 50
+      p.mouseX > Player.PADDING_LEFT_SHIPS + 8 * 50
     ) {
       return;
     } else if (
       p.mouseY < Player.PADDING_TOP_SHIPS ||
-      p.mouseY > Player.PADDING_TOP_SHIPS + 7 * 50
+      p.mouseY > Player.PADDING_TOP_SHIPS + 8 * 50
     ) {
       return;
     }

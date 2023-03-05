@@ -10,7 +10,7 @@ import processing.event.MouseEvent;
 public final class App extends BaseApp {
 
   public static final int[] EASY_SHIPS = { 5, 4, 3 };
-  public static final int[] HARD_SHIPS = { 5, 4, 3, 3, 2 };
+  public static final int[] HARD_SHIPS = { 6, 5, 4, 3, 2 };
 
   public int p1Wins = 0;
   public int p2Wins = 0;
