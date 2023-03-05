@@ -34,7 +34,7 @@ public class Header extends BaseHeader {
     // Show the number of wins for that player
     p.textSize(20);
 
-    int curPlayerWins = a.player.num == 1 ? a.p1Wins : a.p1Wins;
+    int curPlayerWins = a.player.num == 1 ? a.p1Wins : a.p2Wins;
     int otherPlayerWins = a.player.num == 1 ? a.p2Wins : a.p1Wins;
     p.textAlign(PC.LEFT);
     p.text("Wins: " + curPlayerWins + " - Losses: " + otherPlayerWins, 20, 20);

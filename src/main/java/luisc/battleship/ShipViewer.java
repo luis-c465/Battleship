@@ -39,6 +39,15 @@ public class ShipViewer extends Obj {
       p.text("" + value, x + SIZE / 2, y + SIZE / 2);
     }
 
+    p.imageMode(PC.CORNER);
+    if (value >= Patrol) {
+      p.image(r.i.amog, x, y, SIZE, SIZE);
+    } else if (value == Miss) {
+      p.image(r.i.miss, x, y, SIZE, SIZE);
+    } else if (value == Hit) {
+      p.image(r.i.shotAmog, x, y, SIZE, SIZE);
+    }
+
     if (
       showEnemyShips &&
       a.player.otherPlayer.ships.ships[row][col].value > Patrol
