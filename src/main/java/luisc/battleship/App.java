@@ -52,9 +52,9 @@ public final class App extends BaseApp {
     if (!turnOver && !placeOver) {
       header.update();
 
-      helpModal.update();
-
       player.update();
+
+      helpModal.update();
     } else {
       turn.update();
     }
@@ -92,11 +92,10 @@ public final class App extends BaseApp {
   }
 
   public void mouseClicked(MouseEvent e) {
-    if (turnOver) {
+    if (turnOver || helpModal.show) {
+      helpModal.mouseClicked();
       return;
     }
-
-    helpModal.mouseClicked();
 
     if (player.placingShips) {
       player.shipPlacer.onMouseClick();
