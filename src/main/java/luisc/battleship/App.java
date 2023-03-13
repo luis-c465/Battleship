@@ -1,5 +1,7 @@
 package luisc.battleship;
 
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
 import luisc.lib.BaseApp;
 import luisc.lib.HelpModal;
 import processing.event.MouseEvent;
@@ -33,6 +35,8 @@ public final class App extends BaseApp {
   public Turn turn;
   public SkipBtn endTurnBtn;
 
+  public AudioPlayer sound;
+
   @Override
   public void draw() {
     defaultSettings();
@@ -64,6 +68,9 @@ public final class App extends BaseApp {
 
   @Override
   protected void setupAppClasses() {
+    Minim minim = new Minim(this);
+    sound = minim.loadFile("loud.mp3");
+
     intro = new AppIntro(this);
     intro.setup();
 
@@ -92,6 +99,8 @@ public final class App extends BaseApp {
   }
 
   public void mouseClicked(MouseEvent e) {
+    sound.play(0);
+
     if (turnOver || helpModal.show) {
       helpModal.mouseClicked();
       return;
